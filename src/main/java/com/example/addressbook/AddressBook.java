@@ -35,4 +35,10 @@ public class AddressBook {
         }
         System.out.println("Contact Not Found!");
     }
+    
+    //UC3 : Delete Contact
+    
+    public void deleteContact(String name) {
+        contacts.removeIf(c -> c.firstName.equalsIgnoreCase(name));
+    }
 }
