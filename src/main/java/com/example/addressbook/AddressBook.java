@@ -21,4 +21,18 @@ public class AddressBook {
         return contacts.add(contact);
     }
 	
+    //UC2
+   
+    public void editContact(String name) {
+        for (Contact c : contacts) {
+            if (c.firstName.equalsIgnoreCase(name)) {
+                Scanner sc = new Scanner(System.in);
+                System.out.println("Enter New City:");
+                c.city = sc.next();
+                System.out.println("Updated Contact: " + c);
+                return;
+            }
+        }
+        System.out.println("Contact Not Found!");
+    }
 }
