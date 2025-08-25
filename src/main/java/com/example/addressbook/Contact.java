@@ -3,14 +3,14 @@ package com.example.addressbook;
 import java.util.Objects;
 
 public class Contact {
-    private String firstName;
-    private String lastName;
-    private String address;
-    private String city;
-    private String state;
-    private String email;
-    private String phoneNumber;
-    private int zip;
+     String firstName;
+     String lastName;
+     String address;
+     String city;
+     String state;
+     String email;
+     String phoneNumber;
+     int zip;
 
     // UC1: Create Contact – constructor + getters/setters
     public Contact(String firstName, String lastName, String address, String city,
