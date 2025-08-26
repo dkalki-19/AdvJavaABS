@@ -9,8 +9,7 @@ public class AddressBookMain {
 
         System.out.print("How many contacts do you want to add? ");
         int count = sc.nextInt();
-        sc.nextLine(); // consume newline
-
+        sc.nextLine(); 
         for (int i = 0; i < count; i++) {
             System.out.println("\nEnter details for Contact " + (i + 1) + ":");
             System.out.print("First Name: ");
@@ -29,8 +28,7 @@ public class AddressBookMain {
             String phoneNumber = sc.nextLine();
             System.out.print("Zip Code: ");
             int zip = sc.nextInt();
-            sc.nextLine(); // consume newline
-
+            sc.nextLine();
             Contact contact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
             addressBook.addContact(contact);
         }
