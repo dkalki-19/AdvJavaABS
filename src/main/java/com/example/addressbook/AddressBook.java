@@ -26,5 +26,25 @@ public class AddressBook {
     }
 
     public String getName() { return name; }
+    
+    public boolean editContact(String firstName, Scanner sc) {
+        for (Contact c : contacts) {
+            if (c.getFirstName().equalsIgnoreCase(firstName)) {
+                System.out.print("Enter new City: ");
+                c.setCity(sc.nextLine());
+                System.out.print("Enter new State: ");
+                c.setState(sc.nextLine());
+                System.out.print("Enter new Zip: ");
+                c.setZip(Integer.parseInt(sc.nextLine()));
+                System.out.print("Enter new Phone: ");
+                c.setPhoneNumber(sc.nextLine());
+                System.out.print("Enter new Email: ");
+                c.setEmail(sc.nextLine());
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
 

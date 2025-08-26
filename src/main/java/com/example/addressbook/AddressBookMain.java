@@ -30,6 +30,19 @@ public class AddressBookMain {
 
         System.out.println("Contacts in AddressBook:");
         addressBook.getContacts().forEach(System.out::println);
+        
+        
+        System.out.println("Do you want to Edit an existing contact? Y/N");
+        String choice = sc.nextLine();
+        if(choice.equalsIgnoreCase("Y") || choice.equalsIgnoreCase("Yes")) {
+        	
+        	System.out.println("Enter the firstname you want to edit");
+        	String firstname = sc.nextLine();
+        	if(firstname!=null) {
+        		addressBook.editContact(firstname, new Scanner(System.in));
+        	}
+        	
+        }
         sc.close();
     }
 }
