@@ -27,5 +27,11 @@ public class AddressBookSystem {
                 .collect(Collectors.groupingBy(c -> byCity ? c.getCity() : c.getState()));
     }
 
+    public Map<String, Long> countByCityOrState(boolean byCity) {
+        return addressBooks.values().stream()
+                .flatMap(ab -> ab.getContacts().stream())
+                .collect(Collectors.groupingBy(c -> byCity ? c.getCity() : c.getState(), Collectors.counting()));
+    }
+
 }
 
