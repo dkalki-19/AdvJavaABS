@@ -1,7 +1,36 @@
 package com.example.addressbook;
 
+import java.util.*;
+
 public class AddressBookMain {
-	public static void main(String[] args) {
-		System.out.println("Welcome to address book system");
-	}
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        AddressBook addressBook = new AddressBook("MyBook");
+
+        System.out.println("Add a Contact");
+        System.out.print("First Name: ");
+        String fName = sc.nextLine();
+        System.out.print("Last Name: ");
+        String lName = sc.nextLine();
+        System.out.print("Address: ");
+        String address = sc.nextLine();
+        System.out.print("City: ");
+        String city = sc.nextLine();
+        System.out.print("State: ");
+        String state = sc.nextLine();
+        System.out.print("Zip: ");
+        int zip = Integer.parseInt(sc.nextLine());
+        System.out.print("Phone: ");
+        String phone = sc.nextLine();
+        System.out.print("Email: ");
+        String email = sc.nextLine();
+
+        Contact contact = new Contact(fName, lName, address, city, state, zip, phone, email);
+        addressBook.addContact(contact);
+
+        System.out.println("Contacts in AddressBook:");
+        addressBook.getContacts().forEach(System.out::println);
+        sc.close();
+    }
 }
+
