@@ -43,6 +43,19 @@ public class AddressBookMain {
         	}
         	
         }
+        
+        
+        System.out.println("Do you want to delete an existing contact? Y/N");
+        String choice2 = sc.nextLine();
+        if(choice2.equalsIgnoreCase("Y") || choice2.equalsIgnoreCase("Yes")) {
+        	
+        	System.out.println("Enter the firstname you want to delete");
+        	String firstname = sc.nextLine();
+        	if(firstname!=null) {
+        		addressBook.deleteContact(firstname);
+        	}
+        	
+        }
         sc.close();
     }
 }
