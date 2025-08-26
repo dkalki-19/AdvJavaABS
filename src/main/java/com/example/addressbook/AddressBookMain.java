@@ -7,26 +7,35 @@ public class AddressBookMain {
         Scanner sc = new Scanner(System.in);
         AddressBook addressBook = new AddressBook("MyBook");
 
-        System.out.println("Add a Contact");
-        System.out.print("First Name: ");
-        String fName = sc.nextLine();
-        System.out.print("Last Name: ");
-        String lName = sc.nextLine();
-        System.out.print("Address: ");
-        String address = sc.nextLine();
-        System.out.print("City: ");
-        String city = sc.nextLine();
-        System.out.print("State: ");
-        String state = sc.nextLine();
-        System.out.print("Zip: ");
-        int zip = Integer.parseInt(sc.nextLine());
-        System.out.print("Phone: ");
-        String phone = sc.nextLine();
-        System.out.print("Email: ");
-        String email = sc.nextLine();
+        System.out.print("How many contacts do you want to add? ");
+        int count = sc.nextInt();
+        sc.nextLine(); // consume newline
 
-        Contact contact = new Contact(fName, lName, address, city, state, zip, phone, email);
-        addressBook.addContact(contact);
+        for (int i = 0; i < count; i++) {
+            System.out.println("\nEnter details for Contact " + (i + 1) + ":");
+            System.out.print("First Name: ");
+            String firstName = sc.nextLine();
+            System.out.print("Last Name: ");
+            String lastName = sc.nextLine();
+            System.out.print("Address: ");
+            String address = sc.nextLine();
+            System.out.print("City: ");
+            String city = sc.nextLine();
+            System.out.print("State: ");
+            String state = sc.nextLine();
+            System.out.print("Email: ");
+            String email = sc.nextLine();
+            System.out.print("Phone Number: ");
+            String phoneNumber = sc.nextLine();
+            System.out.print("Zip Code: ");
+            int zip = sc.nextInt();
+            sc.nextLine(); // consume newline
+
+            Contact contact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+            addressBook.addContact(contact);
+        }
+
+        System.out.println(count + " contacts added successfully!");
 
         System.out.println("Contacts in AddressBook:");
         addressBook.getContacts().forEach(System.out::println);
