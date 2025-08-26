@@ -1,6 +1,7 @@
 package com.example.addressbook;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class AddressBookSystem {
     private Map<String, AddressBook> addressBooks = new HashMap<>();
@@ -18,6 +19,12 @@ public class AddressBookSystem {
                 .flatMap(ab -> ab.getContacts().stream())
                 .filter(c -> c.getCity().equalsIgnoreCase(key) || c.getState().equalsIgnoreCase(key))
                 .toList();
+    }
+
+    public Map<String, List<Contact>> viewByCityOrState(boolean byCity) {
+        return addressBooks.values().stream()
+                .flatMap(ab -> ab.getContacts().stream())
+                .collect(Collectors.groupingBy(c -> byCity ? c.getCity() : c.getState()));
     }
 
 }
