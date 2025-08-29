@@ -63,6 +63,29 @@ public class AddressBook {
                 .forEach(System.out::println);
     }
 
+ // UC12: Sort by City
+    public void sortByCity() {
+        System.out.println("---- Sorting by City ----");
+        contacts.stream()
+                .sorted(Comparator.comparing(Contact::getCity))
+                .forEach(System.out::println);
+    }
+
+    // UC12: Sort by State
+    public void sortByState() {
+        System.out.println("---- Sorting by State ----");
+        contacts.stream()
+                .sorted(Comparator.comparing(Contact::getState))
+                .forEach(System.out::println);
+    }
+
+    // UC12: Sort by Zip
+    public void sortByZip() {
+        System.out.println("---- Sorting by Zip ----");
+        contacts.stream()
+                .sorted(Comparator.comparing(Contact::getZip))
+                .forEach(System.out::println);
+    }
 
 }
 

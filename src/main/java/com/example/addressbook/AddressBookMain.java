@@ -76,6 +76,15 @@ public class AddressBookMain {
 
         // UC11: Sort by Name
         book.sortByName();
+        
+        // UC12: Sort by City
+        book.sortByCity();
+
+        // UC12: Sort by State
+        book.sortByState();
+
+        // UC12: Sort by Zip
+        book.sortByZip();
     }
 }
 
