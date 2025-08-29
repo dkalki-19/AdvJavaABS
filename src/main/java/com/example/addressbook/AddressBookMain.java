@@ -64,6 +64,18 @@ public class AddressBookMain {
         	
         }
         sc.close();
+        
+        
+        AddressBook book = new AddressBook();
+
+        // Sample Data
+        book.addContact(new Contact("Kalki", "Dhandapani","Potheri", "Chennai", "Tamil Nadu", 600001, "9876543210", "kalki@example.com"));
+        book.addContact(new Contact("Johhny", "Harish","Guduvancheri", "Bangalore", "Karnataka", 560001, "9876501234", "arun@example.com"));
+        book.addContact(new Contact("Meena", "Sharma","kattangulathur", "Mumbai", "Maharashtra", 400001, "9812345678", "meena@example.com"));
+        book.addContact(new Contact("Vijay", "Rao", "Sholinganalur","Hyderabad", "Telangana", 500001, "9123456789", "vijay@example.com"));
+
+        // UC11: Sort by Name
+        book.sortByName();
     }
 }
 

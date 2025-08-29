@@ -6,6 +6,10 @@ import java.util.*;
 public class AddressBook {
     private String name;
     private List<Contact> contacts;
+    
+    public AddressBook() {
+    	
+    }
 
     public AddressBook(String name) {
         this.name = name;
@@ -48,6 +52,15 @@ public class AddressBook {
     
     public boolean deleteContact(String firstName) {
         return contacts.removeIf(c -> c.getFirstName().equalsIgnoreCase(firstName));
+    }
+    
+ // UC11: Sort by Name (using Collections & Streams)
+    public void sortByName() {
+        System.out.println("---- Sorting by Name ----");
+        contacts.stream()
+                .sorted(Comparator.comparing(Contact::getFirstName)
+                        .thenComparing(Contact::getLastName))
+                .forEach(System.out::println);
     }
 
 
