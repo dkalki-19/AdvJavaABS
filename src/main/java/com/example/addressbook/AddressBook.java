@@ -4,6 +4,8 @@ package com.example.addressbook;
 import java.util.*;
 
 public class AddressBook {
+	public enum IOService { CONSOLE_IO, FILE_IO }
+
     private String name;
     private List<Contact> contacts;
     
@@ -86,6 +88,34 @@ public class AddressBook {
                 .sorted(Comparator.comparing(Contact::getZip))
                 .forEach(System.out::println);
     }
+    
+    // UC13 : Ability to Read or Write the Address Book with Persons Contact into aFile using File IO 
+    public void writeAddressBook(IOService ioService) {
+        if (ioService.equals(IOService.FILE_IO)) {
+            new AddressBookFileIOService().writeData(contacts);
+        }
+    }
+
+    public void printAddressBook(IOService ioService) {
+        if (ioService.equals(IOService.FILE_IO)) {
+            new AddressBookFileIOService().printData();
+        }
+    }
+
+    public long countEntries(IOService ioService) {
+        if (ioService.equals(IOService.FILE_IO)) {
+            return new AddressBookFileIOService().countEntries();
+        }
+        return 0;
+    }
+
+    public void readAddressBook(IOService ioService) {
+        if (ioService.equals(IOService.FILE_IO)) {
+            List<String> data = new AddressBookFileIOService().readData();
+            data.forEach(System.out::println);
+        }
+    }
+
 
 }
 
