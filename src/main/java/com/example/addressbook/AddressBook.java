@@ -127,5 +127,15 @@ public class AddressBook {
         data.forEach(row -> System.out.println(String.join(" | ", row)));
     }
 
+    // UC15 -  JSON Read/Write using GSON
+    public void writeJSON() {
+        new AddressBookJSONService().writeData(contacts);
+    }
+
+    public void readJSON() {
+        List<Contact> list = new AddressBookJSONService().readData();
+        list.forEach(System.out::println);
+    }
+
 }
 
