@@ -116,6 +116,16 @@ public class AddressBook {
         }
     }
 
+    
+    // UC14 - CSV Read/Write using OpenCSV
+    public void writeCSV() {
+        new AddressBookCSVService().writeData(contacts);
+    }
+
+    public void readCSV() {
+        List<String[]> data = new AddressBookCSVService().readData();
+        data.forEach(row -> System.out.println(String.join(" | ", row)));
+    }
 
 }
 
