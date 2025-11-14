@@ -6,7 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
 
-public class AddressBookFileIOService {
+public class AddressBookFileIOService implements AddressBookIO {
 
     public static final String ADDRESSBOOK_FILE = "addressbook-file.txt";
 
@@ -53,4 +53,28 @@ public class AddressBookFileIOService {
         }
         return 0;
     }
+
+	@Override
+	public void write(List<ContactPerson> contacts) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<ContactPerson> read() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

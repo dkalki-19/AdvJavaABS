@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddressBookCSVService {
+public class AddressBookCSVService implements AddressBookIO{
 
     public static final String CSV_FILE = "addressbook.csv";
 
@@ -45,4 +45,28 @@ public class AddressBookCSVService {
         }
         return null;
     }
+
+	@Override
+	public void write(List<ContactPerson> contacts) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<ContactPerson> read() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

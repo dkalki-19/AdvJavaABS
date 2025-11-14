@@ -6,12 +6,15 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AddressBookDBService {
+public class AddressBookDBService implements AddressBookIO{
 	
+
 	public boolean addContact(ContactPerson contact) throws SQLException {
 	    String sql = "INSERT INTO address_book_contact (first_name,last_name,address,city,state,zip,phone,email,date_added) VALUES (?,?,?,?,?,?,?,?,?)";
+
 	    try (Connection conn = DBConnectionManager.getConnection();
-	         PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+	         PreparedStatement ps = conn.prepareStatement(sql)) {
+
 	        ps.setString(1, contact.getFirstName());
 	        ps.setString(2, contact.getLastName());
 	        ps.setString(3, contact.getAddress());
@@ -22,10 +25,21 @@ public class AddressBookDBService {
 	        ps.setString(8, contact.getEmail());
 	        ps.setTimestamp(9, Timestamp.valueOf(contact.getDateAdded()));
 
-	        int affected = ps.executeUpdate();
-	        return affected == 1;
+	        return ps.executeUpdate() == 1;
 	    }
 	}
+
+	public void addContacts(List<ContactPerson> contacts) {
+	    contacts.forEach(contact -> {
+	        try {
+	            this.addContact(contact);
+	        } catch (SQLException e) {
+	            e.printStackTrace();
+	        }
+	    });
+	}
+
+	
 
 
     public List<ContactPerson> readAllContacts() throws SQLException {
@@ -155,6 +169,34 @@ public class AddressBookDBService {
         }
         return 0;
     }
+
+
+	@Override
+	public void write(List<ContactPerson> contacts) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public List<ContactPerson> read() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	public void print() {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	@Override
+	public long count() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
     
     
 
