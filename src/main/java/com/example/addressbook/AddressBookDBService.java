@@ -131,5 +131,30 @@ public class AddressBookDBService {
         if (ts != null) c.setDateAdded(ts.toLocalDateTime());
         return c;
     }
+    
+    public int countByCity(String city) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM address_book_contact WHERE city = ?";
+        try (Connection conn = DBConnectionManager.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, city);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) return rs.getInt(1);
+            }
+        }
+        return 0;
+    }
+
+    public int countByState(String state) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM address_book_contact WHERE state = ?";
+        try (Connection conn = DBConnectionManager.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, state);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) return rs.getInt(1);
+            }
+        }
+        return 0;
+    }
+
 }
 
