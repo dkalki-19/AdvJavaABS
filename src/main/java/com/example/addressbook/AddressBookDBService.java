@@ -102,6 +102,34 @@ public class AddressBookDBService {
         return null;
     }
 
-    
+    public List<ContactPerson> getContactsInDateRange(LocalDateTime from, LocalDateTime to) throws SQLException {
+        List<ContactPerson> list = new ArrayList<>();
+        String sql = "SELECT * FROM address_book_contact WHERE date_added BETWEEN ? AND ?";
+        try (Connection conn = DBConnectionManager.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setTimestamp(1, Timestamp.valueOf(from));
+            ps.setTimestamp(2, Timestamp.valueOf(to));
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) list.add(mapResultSetToContact(rs));
+            }
+        }
+        return list;
+    }
+
+    private ContactPerson mapResultSetToContact(ResultSet rs) throws SQLException {
+        ContactPerson c = new ContactPerson();
+        c.setId(rs.getInt("id"));
+        c.setFirstName(rs.getString("first_name"));
+        c.setLastName(rs.getString("last_name"));
+        c.setAddress(rs.getString("address"));
+        c.setCity(rs.getString("city"));
+        c.setState(rs.getString("state"));
+        c.setZip(rs.getString("zip"));
+        c.setPhone(rs.getString("phone"));
+        c.setEmail(rs.getString("email"));
+        Timestamp ts = rs.getTimestamp("date_added");
+        if (ts != null) c.setDateAdded(ts.toLocalDateTime());
+        return c;
+    }
 }
 
